@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-gap: 20px;
+        }
+
+        .sidebar {
+            width: 100px;
+            background: #053462;
+            border-radius: 10px;
+            box-shadow: 2px 2px 20px -3px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
+        }
+
+        .sidebar img {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 25px;
+            opacity: 0.5;
+        }
+
+        .top-bar {
+            background: #ffd205;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            flex: 1;
+        }
+
+        .search-box img {
+            width: 25px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .search-text {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.45);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+
+        .action-button {
+            width: 174px;
+            height: 41px;
+            background: #fbc906;
+            border-radius: 10px;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+
+        .action-button:last-child {
+            margin-right: 0;
+        }
+
+        .action-button img {
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        .action-button span {
+            font-size: 18px;
+            color: black;
+            font-family: Quicksand;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .content-box {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            padding: 30px;
+        }
+
+        .table-info {
+            display: grid;
+            grid-template-columns: 20px repeat(6, 1fr);
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .table-info div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .table-info div:first-child {
+            justify-content: flex-start;
+            padding-left: 10px;
+        }
+
+        .no-data {
+            text-align: center;
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .pagination div {
+            padding: 8px 12px;
+            background-color: #e5e5e5;
+            border-radius: 5px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        .pagination div:hover {
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <img src="assets/icons/Menu.png" href="dashboard.html">
+            <img src="assets/icons/Home Page.png" href="index.html">
+            <img src="assets/icons/Analytics.png">
+            <img src="assets/icons/Checked Identification Documents.png" style="opacity: 0.5;">
+            <img src="assets/icons/User.png" style="opacity: 0.5;">
+        </div>
+        <div class="content-area">
+            <div class="top-bar">
+                <div class="search-box">
+                    <img src="assets/icons/Search.png">
+                    <div class="search-text">Cari Asset</div>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <div class="action-button">
+                    <img src="assets/icons/MacOS Maximize.png">
+                    <span>Tambah asset</span>
+                </div>
+                <div class="action-button">
+                    <img src="assets/icons/Replay.png">
+                    <span>Perbarui</span>
+                </div>
+                <div class="action-button">
+                    <img src="assets/icons/Multiple Choice.png">
+                    <span>Pilih</span>
+                </div>
+                <div class="action-button">
+                    <img src="assets/icons/Delete.png">
+                    <span>Hapus</span>
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="table-info">
+                    <div></div>
+                    <div>Asset Number</div>
+                    <div>Nama Asset</div>
+                    <div>Jenis Asset</div>
+                    <div>Kondisi Asset</div>
+                    <div>Terakhir diperbarui</div>
+                    <div>Unggah oleh</div>
+                </div>
+                <div class="no-data">Tidak ada data yang tersedia dalam tabel.</div>
+            </div>
+            <div class="pagination">
+                <div>1</div>
+                <div class="pagination-link">Previous</div>
+                <div class="pagination-link">Next</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
