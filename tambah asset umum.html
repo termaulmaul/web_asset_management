@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Asset</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Quicksand, sans-serif;
+            background: white;
+        }
+        .container {
+            width: 1440px;
+            height: 836px;
+            position: relative;
+            background: white;
+        }
+        .icon {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+        }
+        .button-group {
+            width: 241px;
+            height: 34px;
+            position: absolute;
+        }
+        .button {
+            width: 102px;
+            height: 34px;
+            position: absolute;
+            background: white;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .button.save {
+            background: #FBC906;
+        }
+        .button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        .button .label {
+            color: black;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .tab-group {
+            width: 218px;
+            height: 39px;
+            position: absolute;
+        }
+        .tab {
+            width: 98px;
+            height: 35px;
+            position: absolute;
+            background: white;
+            box-shadow: 4px 3px 10px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tab .label {
+            color: black;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .form-container {
+            width: 1340px;
+            height: 490px;
+            position: absolute;
+            background: white;
+            box-shadow: 5px 4px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+        }
+        .form-section {
+            position: absolute;
+            left: 169px;
+            top: 66px;
+            width: 344px;
+        }
+        .form-group {
+            position: absolute;
+            width: 344px;
+            height: 50px;
+        }
+        .form-group label {
+            position: absolute;
+            left: 11px;
+            top: 6px;
+            color: black;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .form-group .required {
+            position: absolute;
+            left: 138px;
+            top: 0px;
+            color: #FF0000;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .form-group .input-box {
+            position: absolute;
+            top: 28px;
+            width: 344px;
+            height: 22px;
+            background: white;
+            border-radius: 10px;
+            border: 1px rgba(0, 0, 0, 0.20) solid;
+        }
+        .form-group .input-box input {
+            position: absolute;
+            top: 6px;
+            left: 10px;
+            width: 320px;
+            height: 10px;
+            border: none;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .form-group .input-box img {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 10px;
+            top: 19px;
+        }
+        /* Style for the input box */
+        .input-box {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+        }
+
+        /* Style for the select element */
+        .input-box select {
+            width: 100%;
+            padding: 10px;
+            -webkit-appearance: none; /* Remove default arrow in Safari */
+            -moz-appearance: none; /* Remove default arrow in Firefox */
+            appearance: none; /* Remove default arrow in other browsers */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Style for the icon */
+        .input-box .chevron-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none; /* Prevent click events on the icon */
+        }
+
+        .upload-section {
+            position: absolute;
+            left: 772px;
+            top: 100px;
+            width: 400px;
+            height: 290px;
+            background: white;
+            border-radius: 10px;
+            border: 1px black dotted;
+            text-align: center;
+        }
+        .upload-section span {
+            display: block;
+            color: rgba(0, 0, 0, 0.70);
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 120px;
+        }
+        .upload-section span.sub {
+            color: rgba(0, 0, 0, 0.50);
+            position: relative;
+            bottom: 40%;
+            font-size: 12px;
+        }
+        .upload-section {
+            width: 294px;
+            padding: 20px;
+            text-align: center;
+            background-color: #f0f0f0;
+            border: 2px dashed #cccccc;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .upload-section:hover {
+            background-color: #e0e0e0;
+        }
+        
+        /* Hide the actual file input */
+        .file-input {
+            display: none;
+        }
+        
+        /* Style for the text inside the upload section */
+        .upload-section span {
+            font-family: Quicksand, sans-serif;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .upload-section .sub {
+            font-size: 12px;
+            color: #666;
+        }
+        .file-upload {
+            width: 400px;
+            height: 290px;
+            position: absolute;
+            background: white;
+            border-radius: 10px;
+            border: 1px black dotted;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .file-upload .label {
+            color: rgba(0, 0, 0, 0.70);
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .file-upload .sub-label {
+            color: rgba(0, 0, 0, 0.50);
+            font-size: 12px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="dashboard.html"><img class="icon" style="left: 30px; top: 30px;" src="assets/icons/Undo.png" alt="Icon"></a>        
+        <div class="button-group" style="left: 101px; top: 61px;">
+            <div class="button save" style="left: 0;">
+                <img src="assets/icons/Download.png" alt="Save Icon">
+                <div class="label">Save</div>
+            </div>
+            <div class="button" style="left: 127px;">
+                <img src="assets/icons/Delete.png" alt="Delete Icon">
+                <div class="label">Hapus</div>
+            </div>
+        </div>
+        <div class="tab-group" style="left: 50px; top: 144px;">
+            <div class="tab" style="left: 0; bottom:20%">
+                <div class="label">Umum</div>
+            </div>
+            <a href="tambah asset detail.html" style="text-decoration: none; color: inherit;">
+                <div class="tab" style="left: 120px;">
+                    <div class="label">Detail</div>
+                </div>
+            </a>            
+        </div>
+        <div class="form-container" style="left: 50px; top: 223px;">
+            <div class="form-section">
+                <div class="form-group" style="top: 0px;">
+                    <label for="kategori-asset">Kategori asset</label>
+                    <div class="required">*</div>
+                    <div class="input-box">
+                        <select id="kategori-asset">
+                            <option value="" disabled selected>-</option>
+                            <option value="atb">Asset Tidak Berwujud (ATB)</option>
+                            <option value="att">Asset Tetap & Inventaris (ATB)</option>
+                            <option value="attb">Property Terbengkalai (ATTB)</option>
+                            <option value="attb2">Asset Tetap & Inventaris (ATTB)</option>
+                        </select>
+                        <img src="assets/icons/Chevron Down.png" alt="Icon" class="chevron-icon">
+                    </div>
+                </div>
+                <div class="form-group" style="top: 81px;">
+                    <label for="asset-number">Asset Number</label>
+                    <div class="required">*</div>
+                    <div class="input-box">
+                        <input type="text" id="asset-number" placeholder="Masukkan Nomor Asset">
+                    </div>
+                </div>
+                <div class="form-group" style="top: 158px;">
+                    <label for="nama-asset">Nama Asset</label>
+                    <div class="required" style="left: 115px;">*</div>
+                    <div class="input-box">
+                        <input type="text" id="nama-asset" placeholder="Masukkan Nama Asset">
+                    </div>
+                </div>
+                <div class="form-group" style="top: 235px;">
+                    <label for="jenis-asset">Jenis Asset <span style="font-size: 10px; font-weight: 600;">(Opsional)</span></label>
+                    <div class="input-box">
+                        <input type="text" id="jenis-asset">
+                    </div>
+                </div>
+                <div class="form-group" style="top: 310px;">
+                    <label for="kondisi-asset">Kondisi Asset</label>
+                    <div class="required">*</div>
+                    <div class="input-box">
+                        <select id="kondisi-asset">
+                            <option value="" disabled selected>-</option>
+                            <option value="baik">Baik</option>
+                            <option value="rusak">Rusak</option>
+                            <option value="hilang">Hilang</option>
+                            <option value="update">Update</option>
+                        </select>
+                        <img src="assets/icons/Chevron Down.png" alt="Icon" class="chevron-icon">
+                    </div>
+                </div>
+            </div>
+            <div class="upload-section">
+                <span>Tambahkan File<br/></span>
+                <span class="sub">klik untuk upload</span>
+                <input type="file" id="file-upload" class="file-input" />
+            </div>
+            
+            <script src="tambah asset script.js"></script>
+        </div>
+    </div>
+</body>
+</html>

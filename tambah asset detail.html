@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Asset Detail</title>
+    <style>
+        body {
+            font-family: Quicksand, sans-serif;
+        }
+        .container {
+            width: 1440px;
+            height: 836px;
+            position: relative;
+            background: white;
+        }
+        .btn-container {
+            width: 241px;
+            height: 34px;
+            position: absolute;
+            top: 61px;
+            left: 101px;
+        }
+        .btn {
+            width: 113px;
+            height: 34px;
+            position: absolute;
+            background: white;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn img {
+            margin-right: 10px;
+        }
+        .btn-hapus {
+            left: 128px;
+        }
+        .btn-save {
+            background: #FBC906;
+            left: 0;
+        }
+        .tabs {
+            width: 218px;
+            height: 38px;
+            position: absolute;
+            top: 145px;
+            left: 50px;
+            display: flex;
+        }
+        .tab {
+            width: 98px;
+            height: 34px;
+            background: white;
+            box-shadow: 4px 3px 10px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 24px;
+        }
+        .form-container {
+            width: 1340px;
+            height: 490px;
+            position: absolute;
+            top: 218px;
+            left: 50px;
+            background: white;
+            box-shadow: 5px 4px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+        }
+        .form {
+            width: 1240px;
+            height: 359px;
+            position: absolute;
+            top: 284px;
+            left: 100px;
+            display: flex;
+        }
+        .form-column {
+            width: 344px;
+            position: relative;
+        }
+        .form-group {
+            height: 49px;
+            margin-bottom: 15px;
+        }
+        .form-group .label {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .form-group .optional {
+            font-size: 9px;
+            font-weight: 600;
+        }
+        .form-group .required {
+            color: #FF0000;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .form-group input {
+            width: 100%;
+            height: 22px;
+            background: white;
+            border-radius: 10px;
+            border: 1px rgba(0, 0, 0, 0.20) solid;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .form-group input::placeholder {
+            color: rgba(0, 0, 0, 0.50);
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .form-group .input-container {
+            position: relative;
+        }
+        .form-group .calendar-icon {
+            position: absolute;
+            right: 6px;
+            top: 15px;
+            width: 14px;
+            height: 14px;
+        }
+        css
+        /* Style for the input box */
+        .input-box {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+        }
+
+        /* Style for the input element */
+        .input-box input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            padding-right: 40px; /* Add space for the icon */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -webkit-appearance: none; /* Remove default styling */
+            -moz-appearance: none; /* Remove default styling */
+            appearance: none; /* Remove default styling */
+            font-family: Quicksand, sans-serif;
+        }
+
+        /* Style for the icon */
+        .input-box .calendar-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none; /* Prevent click events on the icon */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="dashboard.html">
+        <img style="width: 30px; height: 30px; left: 30px; top: 30px; position: absolute" src="assets/icons/Undo.png" /></a>
+        <div class="btn-container">
+            <div class="btn btn-save">
+                <img src="assets/icons/Download.png" alt="save icon">
+                Save
+            </div>
+            <div class="btn btn-hapus">
+                <img src="assets/icons/Delete.png" alt="hapus icon">
+                Hapus
+            </div>
+        </div>
+        <div class="tabs">
+                <a href="tambah asset umum.html" class="tab" style="text-decoration:none; color: inherit; top: 5px;">
+        <div>Umum</div>
+    </a>
+            <div class="tab">Detail</div>
+        </div>
+        <div class="form-container"></div>
+        <div class="form">
+            <div class="form-column">
+                <div class="form-group">
+                    <label class="label">
+                        Asset Class
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text" placeholder="Masukkan Asset Class">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">
+                        Investment Order
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text" placeholder="Masukkan Investment Order">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">
+                        Serial Number (PK asset)
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text" placeholder="Masukkan Serial Number (PK Asset)">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">
+                        Merek <span class="optional">(Opsional)</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">
+                        Type <span class="optional">(Opsional)</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">
+                        Kode cabang
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text" placeholder="Masukan Kode Cabang">
+                    </div>
+                </div>
+            </div>
+            <div class="form-column" style="left: 8%;">
+                <div class="form-group">
+                    <label class="label">
+                        Nama Cabang
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text" placeholder="Masukkan Nama Cabang">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">
+                        Nama Divisi
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text" placeholder="Masukkan Nama divisi">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">
+                        Nama Departement
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text" placeholder="Masukkan Nama Departement">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">
+                        Nama Pengguna
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text" placeholder="Masukkan Nama Pengguna">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">
+                        Harga Perolehan
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text" placeholder="Masukkan Harga Perolehan">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">
+                        Tahun Perolehan
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="date" id="tanggal-asset" placeholder="Pilih tanggal">
+                    </div>
+                </div>
+            </div>
+            <div class="form-column" style="left: 15%">
+                <div class="form-group">
+                    <label class="label">
+                        Presentase Amortisasi
+                        <span class="required">*</span>
+                    </label>
+                    <div class="input-container">
+                        <input type="text" placeholder="Masukkan Presentase Amortisasi">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="label">Catatan</label>
+                    <div class="input-container">
+                        <textarea rows="10" placeholder="Masukkan Catatan"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

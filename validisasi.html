@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: white;
+        }
+        .container {
+            width: 1440px;
+            height: 836px;
+            position: relative;
+            background: white;
+        }
+        .sidebar {
+            width: 86px;
+            height: 704px;
+            position: fixed;
+            left: 58px;
+            top: 45px;
+            background: #053462;
+            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+        }
+        /* style.css */
+
+        body {
+            font-family: Quicksand, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .sidebar {
+            width: 86px;
+            height: 704px;
+            position: fixed;
+            left: 58px;
+            top: 45px;
+            background-color: #053463;
+            transition: width 0.3s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .sidebar.expanded {
+            width: 166px;
+        }
+        
+        .sidebar img {
+            width: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            width: 100%;
+            padding: 10px 20px;
+        }
+        
+        .menu-item {
+            width: 100%;
+            display: flex;
+            margin: 10%;
+            position: relative;
+            top: 10%;
+            left: 10px;
+            align-items: center;
+            justify-content: flex-start;
+            transition: all 0.3s;
+        }
+        
+        .icon {
+            width: 30px;
+            transition: all 0.3s;
+        }
+        
+        .icon-text {
+            display: none;
+            margin-left: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            opacity: 0.5;
+        }
+        
+        .sidebar.expanded .icon-text {
+            display: inline-block;
+        }
+        
+        .icon1, .icon2, .icon3, .icon4, .icon5, .icon6 {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .icon1 {
+            top: 20px;
+            opacity: 0.5;
+        }
+        
+        .icon2 {
+            top: 98px;
+            opacity: 0.5;
+        }
+        
+        .icon3 {
+            top: 175px;
+        }
+        
+        .icon4 {
+            top: 252px;
+            opacity: 0.5;
+        }
+        
+        .icon5 {
+            top: 330px;
+        }
+        
+        .icon6 {
+            top: 631px;
+        }
+        
+        #menu-icon {
+            position: fixed;
+            left: 87px;
+            top: 56px;
+            width: 30px;
+            cursor: pointer;
+            transition: left 0.3s;
+        }
+        
+        #menu-icon.slide-out {
+            left: 175px; /* Adjust this value to match the expanded sidebar width */
+        }
+
+        .button-container {
+            width: 327px;
+            height: 34px;
+            position: relative;
+            top: 6%;
+            left: 16%;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .button-primary {
+            width: 175px;
+            height: 34px;
+            left: 5%;
+            bottom: 12%;
+            position: absolute;
+            background: #FBC906;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+
+        .button-primary-text {
+            width: 126px;
+            height: 20px;
+            left: 39px;
+            top: 8px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 18px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+        .button-icon {
+            width: 24px;
+            height: 24px;
+            left: 10px;
+            top: 5px;
+            position: absolute;
+        }
+
+        .button-secondary {
+            width: 127px;
+            height: 34px;
+            left: 70%;
+            bottom: 12%;
+            position: absolute;
+            background: white;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+
+        .button-secondary-text {
+            width: 78px;
+            height: 20px;
+            left: 39px;
+            top: 8px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            font-size: 18px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        .status-card {
+            width: 232px;
+            height: 108px;
+            position: absolute;
+            background: white;
+            box-shadow: 4px 4px 4px -3px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            margin: 20px; /* Optional for spacing between cards */
+        }
+        .status-card-1 {
+            left: 239px;
+            top: 157px;
+        }
+        .status-card-2 {
+            left: 501px;
+            top: 157px;
+        }
+        .status-number {
+            width: 42px;
+            height: 54px;
+            position: absolute;
+            left: 170px;
+            top: 18px;
+            text-align: center;
+            color: black;
+            font-size: 64px;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        .status-text {
+            width: 146px;
+            height: 54px;
+            position: absolute;
+            left: 20px;
+            top: 27px;
+            text-align: center;
+            color: black;
+            font-size: 24px;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        .status-text.validated {
+            width: 146px;
+            top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img id="menu-icon" src="assets/icons/Menu.png" alt="Menu Icon" onclick="toggleSidebar()"/>
+        <div class="menu-item">
+            <a href="index.html">
+                <img class="icon icon1" src="assets/icons/Home Page.png" alt="Home Page Icon" />
+                <span class="icon-text">Home</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="dashboard.html">
+                <img class="icon icon2" src="assets/icons/Analytics.png" alt="Analytics Icon" />
+                <span class="icon-text">Dashboard</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="validisasi.html">
+                <img class="icon icon3" src="assets/icons/Checked Identification Documents.png" alt="Checked Identification Documents Icon" />
+                <span class="icon-text" style="opacity: 1;">Validisasi</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="profile.html">
+                <img class="icon icon4" src="assets/icons/User.png" alt="User Icon" />
+                <span class="icon-text">Profile</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="login.html">
+                <img class="icon icon5" src="assets/icons/Logout.png" alt="Logout Icon" />
+                <span class="icon-text" style="opacity: 1;">Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('expanded');
+            document.querySelector('#menu-icon').classList.toggle('slide-out');
+        }
+    </script>
+
+        <div class="button-container">
+            <a href="tambah asset umum.html">
+                <div class="button-primary">
+                    <div class="button-primary-text">Tambah asset</div>
+                    <img class="button-icon" src="assets/icons/MacOS Maximize.png" alt="Icon">
+                </div>
+            </a>
+            <div class="button-secondary">
+                <div class="button-secondary-text">Perbarui</div>
+                <img class="button-icon" src="assets/icons/Replay.png" alt="Icon">
+            </div>
+        </div>
+        <a href="validisasi2.html" style="text-decoration: none; color: inherit;">
+            <div class="status-card status-card-1">
+              <div class="status-card-bg"></div>
+              <div class="status-number">1</div>
+              <div class="status-text">Menunggu Validisasi</div>
+            </div>
+          </a>          
+        <div class="status-card status-card-2">
+            <div class="status-number">0</div>
+            <div class="status-text validated">Tervalidisasi</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -6,157 +6,206 @@
     <title>Login</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: Quicksand, sans-serif;
             margin: 0;
             padding: 0;
-            background: #ffffff;
-            font-family: 'Quicksand', sans-serif;
+            background: white;
         }
-
         .container {
-            display: flex;
-            justify-content: center;
+            width: 1303px;
+            height: 788px;
+            padding-left: 137px;
+            background: white;
+            display: inline-flex;
+            justify-content: flex-end;
             align-items: center;
-            height: 100%;
-            width: 100%;
-            max-width: 1440px;
-            padding: 0 24px;
-            overflow: hidden; /* Prevents any overflow causing unwanted spaces */
+            gap: 127px;
         }
-
         .login-box {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
+            width: 474px;
+            height: 504px;
             position: relative;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            left: 0%;
+        }
+        .login-box .background {
+            width: 474px;
+            height: 504px;
+            position: absolute;
+            background: white;
+            box-shadow: 7px 6px 25px -5px rgba(0, 0, 0, 0.25);
             border-radius: 15px;
-            background: #ffffff;
-            padding: 40px;
+        }
+        .login-box .header {
+            width: 474px;
+            height: 136px;
+            position: absolute;
+        }
+        .login-box .header .background {
+            width: 474px;
+            height: 136px;
+            position: absolute;
+            background: #FFD205;
+            box-shadow: none;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+        .login-box .header .title {
+            width: 208px;
+            height: 74px;
+            position: absolute;
+            left: 133px;
+            top: 34px;
+            text-align: center;
+            color: black;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .login-box .form {
+            width: 366px;
+            height: 212.89px;
+            position: absolute;
+            left: 54px;
+            top: 159px;
+        }
+        .login-box .form .input-group {
+            width: 366px;
+            height: 69.79px;
+            position: absolute;
+        }
+        .login-box .form .input-group input {
+            width: 366px;
+            height: 48px;
+            position: absolute;
+            background: white;
+            border-radius: 20px;
+            border: 1px rgba(0, 0, 0, 0.20) solid;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        
+        .login-box .form .input-group .label {
+            position: absolute;
+            color: black;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .login-box .form .input-group .placeholder {
+            position: absolute;
+            color: rgba(0, 0, 0, 0.30);
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .login-box .form .username {
+            top: 54.71px;
+        }
+        .login-box .form .username input {
+            font-family: Quicksand, sans-serif;
+            font-size: 12px;
+            top: 21.79px;
+        }
+        .login-box .form .username .label {
+            left: 19px;
+            top: 0px;
+        }
+        .login-box .form .username .placeholder {
+            left: 19px;
+            top: 38.29px;
+        }
+        .login-box .form .password {
+            top: 144px;
+        }
+        .login-box .form .password input {
+            font-family: Quicksans, sans-serif;
+            font-size: 12px;
+            top: 20.89px;
+        }
+        .login-box .form .password .label {
+            left: 17px;
+            top: 0px;
+        }
+        .login-box .form .password .placeholder {
+            left: 17px;
+            top: 37px;
+        }
+        .login-box .form .login-title {
+            width: 86px;
+            height: 36px;
+            position: absolute;
+            top: 0px;
+            left: 140px;
+            color: black;
+            font-size: 28px;
+            font-weight: 700;
             text-align: center;
         }
-
-        .login-header-text {
-            font-size: 36px;
-            font-weight: 700;
-            color: #053462;
-            text-transform: uppercase;
-            margin-bottom: 20px;
+        .login-box .button {
+            width: 174px;
+            height: 44px;
+            position: absolute;
+            left: 150px;
+            top: 403px;
         }
-
-        .login-form {
-            margin-top: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 700;
-            color: #333333;
-            margin-bottom: 8px;
-            text-align: left;
-        }
-
-        .form-group input {
-            width: 100%;
-            height: 48px;
-            border: 1px solid #dddddd;
-            border-radius: 24px;
-            padding: 0 16px;
-            font-size: 14px;
-            color: #333333;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #053462;
-        }
-
-        .login-button {
-            width: 100%;
-            max-width: 220px;
-            height: 48px;
+        .login-box .button .background {
+            width: 174px;
+            height: 44px;
+            position: absolute;
             background: #053462;
-            border-radius: 24px;
+            border-radius: 20px;
+            box-shadow: none;
+        }
+        .login-box .button .text {
+            width: 44px;
+            height: 14px;
+            position: absolute;
+            left: 65px;
+            top: 15px;
+            text-align: center;
             color: white;
             font-size: 16px;
             font-weight: 700;
-            text-align: center;
-            line-height: 48px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            margin-top: 20px;
+        }
+        .right-side {
+            width: 728px;
+            height: 789px;
+            position: relative;
+            left: 0px;
+            bottom: 0px;
+            background: url('assets/images/home_baner.png') no-repeat center center;
+            background-size: cover;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
         }
 
-        .login-button:hover {
-            background: #042a44;
-        }
+        
 
-        .background-right {
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .container {
-                justify-content: space-between;
-            }
-
-            .login-box {
-                padding: 60px;
-            }
-
-            .login-header-text {
-                font-size: 48px;
-            }
-
-            .form-group input {
-                height: 56px;
-            }
-
-            .login-button {
-                height: 56px;
-                line-height: 56px;
-            }
-
-            .background-right {
-                display: block;
-                width: 100%;
-                max-width: 743px;
-                height: 100%;
-                background: url('assets/images/home_baner.png') no-repeat center center;
-                background-size: cover;
-                border-top-left-radius: 40px;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="login-box">
-            <div class="login-header">
-                <div class="login-header-text">Asset<br>Management</div>
+            <div class="background"></div>
+            <div class="header">
+                <div class="background"></div>
+                <div class="title">Asset <br/>Management</div>
             </div>
-            <form class="login-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Username" required>
+            <div class="form">
+                <div class="input-group username">
+                    <input type="text" id="username" placeholder="Masukan Username">
+                    <div class="label">Username</div>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
+                <div class="input-group password">
+                    <input type="password" id="password" placeholder="Masukkan Kata sandi">
+                    <div class="label">Kata sandi</div>
                 </div>
-                <button type="submit" class="login-button">Login</button>
-            </form>
+                <div class="login-title">Login</div>
+            </div>
+            <div class="button">
+                <a href="index.html"><div class="background"></div></a>                  
+                <div class="text">Login</div>
+            </div>
         </div>
-        <div class="background-right"></div>
+        <div class="right-side"></div>
     </div>
 </body>
 </html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validisasi Asset</title>
+    <style>
+        body {
+            font-family: Quicksand, sans-serif;
+        }
+        .container {
+            width: 1440px;
+            height: 836px;
+            position: relative;
+            background: white;
+        }
+        .sidebar {
+            width: 86px;
+            height: 704px;
+            position: fixed;
+            left: 58px;
+            top: 45px;
+            background: #053462;
+            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+        }
+        /* style.css */
+
+        body {
+            font-family: Quicksand, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .sidebar {
+            width: 86px;
+            height: 704px;
+            position: fixed;
+            left: 58px;
+            top: 45px;
+            background-color: #053463;
+            transition: width 0.3s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .sidebar.expanded {
+            width: 166px;
+        }
+        
+        .sidebar img {
+            width: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            width: 100%;
+            padding: 10px 20px;
+        }
+        
+        .menu-item {
+            width: 100%;
+            display: flex;
+            margin: 10%;
+            position: relative;
+            top: 10%;
+            left: 10px;
+            align-items: center;
+            justify-content: flex-start;
+            transition: all 0.3s;
+        }
+        
+        .icon {
+            width: 30px;
+            transition: all 0.3s;
+        }
+        
+        .icon-text {
+            display: none;
+            margin-left: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            opacity: 0.5;
+        }
+        
+        .sidebar.expanded .icon-text {
+            display: inline-block;
+        }
+        
+        .icon1, .icon2, .icon3, .icon4, .icon5, .icon6 {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .icon1 {
+            top: 20px;
+            opacity: 0.5;
+        }
+        
+        .icon2 {
+            top: 98px;
+            opacity: 0.5;
+        }
+        
+        .icon3 {
+            top: 175px;
+        }
+        
+        .icon4 {
+            top: 252px;
+            opacity: 0.5;
+        }
+        
+        .icon5 {
+            top: 330px;
+        }
+        
+        .icon6 {
+            top: 631px;
+        }
+        
+        #menu-icon {
+            position: fixed;
+            left: 87px;
+            top: 56px;
+            width: 30px;
+            cursor: pointer;
+            transition: left 0.3s;
+        }
+        
+        #menu-icon.slide-out {
+            left: 175px; /* Adjust this value to match the expanded sidebar width */
+        }
+        .header-buttons {
+            width: 567px;
+            height: 34px;
+            position: absolute;
+            left: 238px;
+            top: 37px;
+        }
+        .header-buttons .button {
+            position: absolute;
+            height: 34px;
+            background: white;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            text-align: center;
+            line-height: 34px;
+            font-size: 18px;
+            font-weight: 700;
+            color: black;
+        }
+        .header-buttons .button img {
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .header-buttons .tambah {
+            width: 175px;
+            left: 0px;
+            background: #FBC906;
+        }
+        .header-buttons .pilih {
+            width: 84px;
+            left: 200px;
+        }
+        .header-buttons .hapus {
+            width: 106px;
+            left: 309px;
+        }
+        .header-buttons .perbarui {
+            width: 127px;
+            left: 440px;
+        }
+        .header {
+            width: 1077px;
+            height: 42px;
+            position: absolute;
+            left: 238px;
+            top: 14%;
+            background: #FFD205;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0 33px;
+        }
+        .header .title {
+            font-size: 15px;
+            font-weight: 700;
+            color: black;
+        }
+        .header .search-bar {
+            margin-left: auto;
+            width: 189.19px;
+            height: 19.38px;
+            background: white;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .header .search-bar div {
+            font-size: 10px;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.45);
+        }
+        .header .search-bar img {
+            width: 15px;
+            height: 15px;
+            margin-left: auto;
+        }
+        .header-container {
+            width: 1143px;
+            height: 106px;
+            position: absolute;
+            top: 165px;
+            left: 238px;
+        }
+        .header-background {
+            width: 1143px;
+            height: 106px;
+            background: #F2F2F2;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            position: absolute;
+        }
+        .header-content {
+            width: 1101.56px;
+            height: 68px;
+            position: absolute;
+            left: 19px;
+            top: 9px;
+        }
+            .header-row {
+                width: 1099.02px;
+                height: 39px;
+                position: absolute;
+                top: 29px;
+            }
+            
+        .header-item {
+            width: 20px; 
+            height: 20px; 
+            background: #F7F7F7; 
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25); 
+            border-radius: 5px
+        }
+        .header-item div {
+            background: #F7F7F7;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+        }
+        .header-item-label {
+            height: 11px;
+            line-height: 11px;
+            text-align: center;
+        }
+        .status-button {
+            width: 73.02px;
+            height: 38px;
+            position: absolute;
+            left: 1026px;
+            top: 1px;
+        }
+        .status-button div {
+            border-radius: 5px;
+        }
+        .status-button-text {
+            width: 60.50px;
+            height: 8px;
+            text-align: center;
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            line-height: 8px;
+        }
+        .delete-button {
+            width: 52.15px;
+            height: 18px;
+            position: absolute;
+            left: 10.44px;
+            top: 20px;
+        }
+        .delete-button div {
+            background: #FF0000;
+            border-radius: 5px;
+        }
+        .delete-button-text {
+            width: 29.21px;
+            height: 8px;
+            text-align: right;
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            line-height: 8px;
+        }
+        .delete-button img {
+            width: 9.39px;
+            height: 12px;
+            position: absolute;
+            left: 5.22px;
+            top: 3px;
+        }
+        .header-item-title {
+            width: 110.51px;
+            left: 35.73px;
+            top: 8px;
+        }
+        .header-item-title, .header-item-subtitle {
+            position: absolute;
+            color: black;
+            font-size: 15px;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        .asset-row {
+            width: 1099.02px;
+            height: 39px;
+            position: relative;
+            top: 45%;
+        }
+        .asset-row div {
+            position: absolute;
+        }
+        .asset-checkbox {
+            width: 21.05px;
+            height: 20px;
+            top: 4.49px;
+            background: #F7F7F7;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+        }
+        .asset-id {
+            width: 110.51px;
+            left: 35.73px;
+            top: 8px;
+            color: black;
+            font-size: 15px;
+            font-family: Quicksand, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        .asset-name, .asset-category, .asset-condition, .asset-owner {
+            width: 106.30px;
+            height: 11px;
+            top: 16px;
+            color: black;
+            font-size: 15px;
+            font-family: Quicksand, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        .asset-name { left: 203.08px; }
+        .asset-category { left: 367.26px; }
+        .asset-condition { left: 531.45px; }
+        .asset-owner { left: 695.64px; }
+        .asset-status {
+            width: 95.66px;
+            height: 26.94px;
+            left: 867.20px;
+            top: 0px;
+            color: black;
+            font-size: 15px;
+            font-family: Quicksand, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        .action-buttons {
+            width: 73.02px;
+            height: 38px;
+            left: 1026px;
+            top: 1px;
+        }
+        .change-status, .delete-asset {
+            width: 73.02px;
+            height: 18px;
+        }
+        .change-status {
+            background: #053462;
+            border-radius: 5px;
+        }
+        .change-status-text {
+            width: 60px;
+            height: 8px;
+            left: 6px;
+            top: 4px;
+            text-align: center;
+            color: white;
+            font-size: 9px;
+            font-family: Quicksand, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        .delete-asset {
+            top: 20px;
+        }
+        .delete-asset-box {
+            background: #FF0000;
+            width: 75%;
+            height: 96%;
+            left: 11%;
+            border-radius: 5px;
+        }
+        .delete-asset-text {
+            width: 32px;
+            height: 8px;
+            left: 24px;
+            top: 3px;
+            text-align: right;
+            color: white;
+            font-size: 9px;
+            font-family: Quicksand, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        .delete-asset-icon {
+            width: 9.39px;
+            height: 12px;
+            position: absolute;
+            left: 14px;
+            top: 2px;
+        }
+        .show-entries {
+            width: 108px;
+            height: 15px;
+            position: absolute;
+            top: 110%;
+            font-size: 13px;
+            font-weight: 600;
+            color: black;
+        }
+        .show-entries div {
+            position: absolute;
+            text-align: center;
+        }
+        .show-entries .show {
+            width: 34px;
+            left: 0px;
+        }
+        .show-entries .entries {
+            width: 44px;
+            left: 64px;
+        }
+        .show-entries .box {
+            width: 20px;
+            height: 15px;
+            left: 39px;
+            background: white;
+            border-radius: 5px;
+            border: 0.40px rgba(0, 0, 0, 0.50) solid;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img id="menu-icon" src="assets/icons/Menu.png" alt="Menu Icon" onclick="toggleSidebar()"/>
+        <div class="menu-item">
+            <a href="index.html">
+                <img class="icon icon1" src="assets/icons/Home Page.png" alt="Home Page Icon" />
+                <span class="icon-text">Home</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="dashboard.html">
+                <img class="icon icon2" src="assets/icons/Analytics.png" alt="Analytics Icon" />
+                <span class="icon-text">Dashboard</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="validisasi.html">
+                <img class="icon icon3" src="assets/icons/Checked Identification Documents.png" alt="Checked Identification Documents Icon" />
+                <span class="icon-text" style="opacity: 1;">Validisasi</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="profile.html">
+                <img class="icon icon4" src="assets/icons/User.png" alt="User Icon" />
+                <span class="icon-text">Profile</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="login.html">
+                <img class="icon icon5" src="assets/icons/Logout.png" alt="Logout Icon" />
+                <span class="icon-text" style="opacity: 1;">Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('expanded');
+            document.querySelector('#menu-icon').classList.toggle('slide-out');
+        }
+    </script>
+
+        <div class="header-buttons">
+            <div class="button tambah">
+                <a href="tambah asset umum.html" style="text-decoration:none; color:inherit"><img src="assets/icons/MacOS Maximize.png" alt="Tambah" />Tambah asset</a>
+            </div>
+            <div class="button pilih">
+                <img src="assets/icons/Multiple Choice.png" alt="Pilih" />Pilih
+            </div>
+            <div class="button hapus">
+                <img src="assets/icons/Delete.png" alt="Hapus" />Hapus
+            </div>
+            <div class="button perbarui">
+                <img src="assets/icons/Replay.png" alt="Perbarui" />Perbarui
+            </div>
+        </div>
+        <div class="header">
+            <div class="title">Validisasi Asset</div>
+            <div class="search-bar">
+                <div>Cari Asset</div>
+                <img src="assets/icons/Search.png" />
+            </div>
+        </div>
+        <div class="header-container">
+            <div class="header-background"></div>
+            <div class="header-content">
+                
+                <div class="header-row" style="height: 20px; top: 0;">
+                    <div class="header-item" style="left: 8px; top: 8px;">
+                        <div></div>
+                    </div>
+                    <div class="header-item header-item-title" style="width: 110.51px; height: 0; left: 35.56px; top: 2px;">Asset Number</div>
+                    <div class="header-item header-item-title" style="width: 106.67px; height: 0; left: 203.08px; top: 2px;">Nama Asset</div>
+                    <div class="header-item header-item-title" style="width: 106.67px; height: 0; left: 367.26px; top: 2px;">Jenis Asset</div>
+                    <div class="header-item header-item-title" style="width: 106.67px; height: 0; left: 531.45px; top: 2px;">Kondisi Asset</div>
+                    <div class="header-item header-item-title" style="width: 114.72px; height: 0; left: 695.64px; top: 2px;">Unggah Oleh</div>
+                    <div class="header-item header-item-title" style="width: 97.17px; height: 0; left: 867.20px; top: 2px;">Status</div>
+                    <div class="header-item header-item-title" style="width: 78.56px; height: 0; left: 1023px; top: 2px; text-align: center;">Opsi</div>
+                </div>
+                <div class="asset-row">
+                    <div class="asset-checkbox"></div>
+                    <div class="asset-id">210 xxxxxxx</div>
+                    <div class="asset-name">CPU Asus</div>
+                    <div class="asset-category">CPU</div>
+                    <div class="asset-condition">Baik</div>
+                    <div class="asset-owner">Murtin</div>
+                    <div class="asset-status">Belum divalidisasi</div>
+                    <div class="action-buttons">
+                        <div class="change-status">
+                            <div class="change-status-text">Ubah status</div>
+                        </div>
+                        <div class="delete-asset">
+                            <div class="delete-asset-box"></div>
+                            <div class="delete-asset-text">Hapus</div>
+                            <img class="delete-asset-icon" src="assets/icons/DeleteW.png" />
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="show-entries">
+            <div class="show">Show</div>
+            <div class="box" style="top: 0;"></div>
+            <div class="entries" style="top: 0;">Entries</div>
+        </div>
+    </div>
+</body>
+</html>

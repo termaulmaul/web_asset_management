@@ -43,7 +43,7 @@
             left: 70px;
         }
         .nav-menu {
-            width: 357px;
+            width: 406px;
             height: 17px;
             display: inline-flex;
             justify-content: center;
@@ -51,14 +51,43 @@
             gap: 26px;
             position: absolute;
             top: 13px;
-            left: 1013px;
+            left: 964px;
         }
         .nav-item {
             text-align: center;
-            color: black;
+            color: rgb(0, 0, 0);
             font-size: 14px;
             font-family: Quicksand, sans-serif;
             font-weight: 700;
+        }
+        .icon {
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        /* Style for the popup */
+        .popup {
+            display: none; /* Initially hidden */
+            position: absolute;
+            top: 28px; /* Adjust as needed */
+            right: 0px; /* Adjust as needed */
+            background-color: #fff;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            padding: 10px;
+            width: 200px;
+            z-index: 1000; /* Ensure it's above other elements */
+        }
+
+        /* Style for the popup text */
+        .popup p {
+            margin: 0;
+            padding: 5px 0;
+            font-family: Quicksand, sans-serif;
+            font-size: 14px;
+            color: black;
         }
         .search-bar {
             width: 938px;
@@ -83,7 +112,7 @@
             border: 3px solid rgba(255, 255, 255, 0.70);
             position: absolute;
             top: 0;
-            left: 863px;
+            left: 860px;
             transform: rotate(90deg);
             transform-origin: 0 0;
         }
@@ -91,18 +120,18 @@
             width: 50px;
             height: 50px;
             position: absolute;
-            top: 5px;
+            top: 8px;
             left: 868px;
         }
         .search-bar-text {
-            width: 98px;
+            width: 120px;
             height: 28px;
             color: rgba(255, 255, 255, 0.70);
             font-size: 20px;
             font-family: Quicksand, sans-serif;
             font-weight: 700;
             position: absolute;
-            top: 16px;
+            top: 18px;
             left: 30px;
         }
         .categories {
@@ -232,14 +261,21 @@
             <div class="header-background"></div>
             <div class="header-title">Asset Management</div>
             <div class="nav-menu">
-                <div class="nav-item"><a href="index.html">Home</a></div>
-                <div class="nav-item"><a href="dashboard.html">Dashboard</a></div>
-                <div class="nav-item"><a href="#">Validisasi Asset</a></div>
-            </div>            
+                <a href="index.html" class="nav-item" style="text-decoration: none; color: inherit;" class="nav-item">Home</a>
+                <a href="dashboard.html" class="nav-item" style="text-decoration: none; color: inherit;" class="nav-item">Dashboard</a>
+                <a href="validisasi.html" class="nav-item" style="text-decoration: none; color: inherit;"<a href="index.html" class="nav-item" style="text-decoration: none; color: inherit;" class="nav-item">Validisasi Asset</a>
+                <a href="profile.html" class="nav-item" style="text-decoration: none; color: inherit;" class="nav-item">Profil</a>
+                <img class="icon" src="assets/icons/Notif.png" alt="Icon" id="notif-icon" />
+                <div id="notif-popup" class="popup">
+                    <p>Menunggu validasi asset</p>
+                    <p>asset diunggah oleh smith</p>
+                </div>
+                <script src="index script.js"></script>
+            </div>           
             <div class="search-bar">
                 <div class="search-bar-bg"></div>
                 <div class="search-bar-divider"></div>
-                <img class="search-bar-icon" src="assets/icons/Search.png" alt="Search Icon">
+                <img class="search-bar-icon" src="assets/icons/SearchW.png" alt="Search Icon">
                 <div class="search-bar-text">Cari Asset</div>
             </div>            
             <div class="categories">
@@ -252,28 +288,28 @@
         <div class="assets">
             <div class="asset-item">
                 <div class="asset-bg"></div>
-                <img class="asset-image" src="https://via.placeholder.com/210x144" alt="Asset Image">
+                <img class="asset-image" src="assets/images/laptop.png" alt="Asset Image">
                 <div class="asset-title">Laptop<br/>Mackbook</div>
             </div>
             <div class="asset-item">
                 <div class="asset-bg"></div>
-                <img class="asset-image" src="https://via.placeholder.com/210x144" alt="Asset Image">
+                <img class="asset-image" src="assets/images/laptop.png" alt="Asset Image">
                 <div class="asset-title">Laptop<br/>Mackbook</div>
             </div>
             <div class="asset-item">
                 <div class="asset-bg"></div>
-                <img class="asset-image" src="https://via.placeholder.com/210x144" alt="Asset Image">
+                <img class="asset-image" src="assets/images/laptop.png" alt="Asset Image">
                 <div class="asset-title">Laptop<br/>Mackbook</div>
             </div>
             <div class="asset-item">
                 <div class="asset-bg"></div>
-                <img class="asset-image" src="https://via.placeholder.com/210x144" alt="Asset Image">
+                <img class="asset-image" src="assets/images/laptop.png" alt="Asset Image">
                 <div class="asset-title">Laptop<br/>Mackbook</div>
             </div>
         </div>
         <div class="section-header">
             <div class="section-title">Asset</div>
-            <div class="view-all-button"></div>
+            <a href="dashboard.html"><div class="view-all-button"></div>
             <div class="view-all-text">Lihat Semua</div>
         </div>
     </div>

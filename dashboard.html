@@ -6,220 +6,482 @@
     <title>Dashboard</title>
     <style>
         body {
+            font-family: Quicksand, sans-serif;
+        }
+        .container {
+            width: 1440px;
+            height: 836px;
+            position: relative;
+            background: white;
+        }
+        .sidebar {
+            width: 86px;
+            height: 704px;
+            position: fixed;
+            left: 58px;
+            top: 45px;
+            background: #053462;
+            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+        }
+        /* style.css */
+
+        body {
+            font-family: Quicksand, sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Quicksand', sans-serif;
-            background-color: #f5f5f5;
         }
-
-        .dashboard-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            display: grid;
-            grid-template-columns: auto 1fr;
-            grid-gap: 20px;
-        }
-
+        
         .sidebar {
-            width: 100px;
-            background: #053462;
-            border-radius: 10px;
-            box-shadow: 2px 2px 20px -3px rgba(0, 0, 0, 0.25);
+            width: 86px;
+            height: 704px;
+            position: fixed;
+            left: 58px;
+            top: 45px;
+            background-color: #053463;
+            transition: width 0.3s;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 30px;
         }
-
+        
+        .sidebar.expanded {
+            width: 166px;
+        }
+        
         .sidebar img {
             width: 30px;
-            height: 30px;
-            margin-bottom: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            width: 100%;
+            padding: 10px 20px;
+        }
+        
+        .menu-item {
+            width: 100%;
+            display: flex;
+            margin: 10%;
+            position: relative;
+            top: 10%;
+            left: 10px;
+            align-items: center;
+            justify-content: flex-start;
+            transition: all 0.3s;
+        }
+        
+        .icon {
+            width: 30px;
+            transition: all 0.3s;
+        }
+        
+        .icon-text {
+            display: none;
+            margin-left: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
             opacity: 0.5;
         }
-
-        .top-bar {
-            background: #ffd205;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px 30px;
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
+        
+        .sidebar.expanded .icon-text {
+            display: inline-block;
         }
-
-        .search-box {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            flex: 1;
+        
+        .icon1, .icon2, .icon3, .icon4, .icon5, .icon6 {
+            width: 30px;
+            height: 30px;
         }
-
-        .search-box img {
-            width: 25px;
-            height: 20px;
-            margin-right: 10px;
+        
+        .icon1 {
+            top: 20px;
+            opacity: 0.5;
         }
-
-        .search-text {
-            font-size: 14px;
-            color: rgba(0, 0, 0, 0.45);
+        
+        .icon2 {
+            top: 98px;
         }
-
-        .action-buttons {
-            display: flex;
-            justify-content: flex-start;
-            margin-top: 20px;
+        
+        .icon3 {
+            top: 175px;
+            opacity: 0.5;
         }
-
-        .action-button {
-            width: 174px;
-            height: 41px;
-            background: #fbc906;
-            border-radius: 10px;
-            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
+        
+        .icon4 {
+            top: 252px;
+            opacity: 0.5;
         }
-
-        .action-button:last-child {
-            margin-right: 0;
+        
+        .icon5 {
+            top: 330px;
         }
-
-        .action-button img {
-            width: 25px;
-            height: 25px;
-            margin-right: 10px;
+        
+        .icon6 {
+            top: 631px;
         }
-
-        .action-button span {
-            font-size: 18px;
-            color: black;
-            font-family: Quicksand;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .content-box {
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
-            padding: 30px;
-        }
-
-        .table-info {
-            display: grid;
-            grid-template-columns: 20px repeat(6, 1fr);
-            gap: 20px;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .table-info div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            background-color: #f7f7f7;
-            border-radius: 5px;
-            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-        }
-
-        .table-info div:first-child {
-            justify-content: flex-start;
-            padding-left: 10px;
-        }
-
-        .no-data {
-            text-align: center;
-            color: rgba(0, 0, 0, 0.5);
-            font-size: 14px;
-            font-weight: 700;
-            margin-top: 20px;
-        }
-
-        .pagination {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-top: 20px;
-        }
-
-        .pagination div {
-            padding: 8px 12px;
-            background-color: #e5e5e5;
-            border-radius: 5px;
-            margin-left: 5px;
+        
+        #menu-icon {
+            position: fixed;
+            left: 87px;
+            top: 56px;
+            width: 30px;
             cursor: pointer;
+            transition: left 0.3s;
+        }
+        
+        #menu-icon.slide-out {
+            left: 175px; /* Adjust this value to match the expanded sidebar width */
         }
 
-        .pagination div:hover {
-            background-color: #cccccc;
+        .header-buttons {
+            width: 567px;
+            height: 34px;
+            position: absolute;
+            left: 238px;
+            top: 37px;
+        }
+        .header-buttons .button {
+            position: absolute;
+            height: 34px;
+            background: white;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            text-align: center;
+            line-height: 34px;
+            font-size: 18px;
+            font-weight: 700;
+            color: black;
+        }
+        .header-buttons .button img {
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .header-buttons .tambah {
+            width: 175px;
+            left: 0px;
+            background: #FBC906;
+        }
+        .header-buttons .pilih {
+            width: 84px;
+            left: 200px;
+        }
+        .header-buttons .hapus {
+            width: 106px;
+            left: 309px;
+        }
+        .header-buttons .perbarui {
+            width: 127px;
+            left: 440px;
+        }
+        .search-bar {
+            width: 1144px;
+            height: 42px;
+            position: absolute;
+            left: 238px;
+            top: 115px;
+            background: #FFD205;
+            border-radius: 10px 10px 0 0;
+        }
+        .search-bar {
+            width: 1144px;
+            height: 42px;
+            position: absolute;
+            left: 238px;
+            top: 115px;
+            background: #FFD205;
+            border-radius: 10px 10px 0 0;
+        }
+        .search-bar .input {
+            position: absolute;
+            height: 20px;
+            background: white;
+            box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+            line-height: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.45);
+            padding: 0 10px; /* Add padding to ensure space inside the input */
+        }
+        .search-bar .input img {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            left: 87%; /* Align icon to the left */
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%);
+        }
+        .search-bar .input .text {
+            position: absolute;
+            left: 10px; /* Adjust left position to fit the text */
+            top: 54%; /* Center vertically */
+            transform: translateY(-50%);
+        }
+        .asset-card {
+            width: 208px;
+            height: 22px;
+            position: relative;
+            top: 10px;
+            left: 45px;
+        }
+        .asset-card-bg {
+            width: 208px;
+            height: 22px;
+            position: absolute;
+            background: white;
+            box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+        }
+        .asset-text {
+            width: 174px;
+            height: 14px;
+            position: absolute;
+            left: 5px;
+            top: 4px;
+            text-align: center;
+            color: black;
+            font-size: 13px;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+        .asset-icon {
+            width: 14px;
+            height: 14px;
+            position: absolute;
+            left: 187px;
+            top: 5px;
+        }
+        /* Style the dropdown button */
+        .dropbtn {
+            background-color: rgba(255, 255, 255, 0);
+            width: 26px;
+            height: 26px;
+            position: absolute;
+            bottom: -13px;
+            left: 181px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 11px;
+            background-color: white;
+            min-width: 208px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #f1f1f1;
+        }
+
+        .asset-table {
+            width: 1144px;
+            height: 106px;
+            position: absolute;
+            left: -45px;
+            top: 38px;
+            background: #F2F2F2;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .asset-table .table-header {
+            width: 1092px;
+            height: 20px;
+            position: absolute;
+            left: 12px;
+        }
+        .asset-table .table-header div {
+            position: absolute;
+            height: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            color: black;
+        }
+        .asset-table .table-header .icon {
+            width: 20px; 
+            height: 20px; 
+            background: #F7F7F7; 
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25); 
+            border-radius: 5px
+        }
+        .asset-table .no-data {
+            position: relative;
+            top: 57px;
+            left: 10px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.50);
+        }
+        .show-entries {
+            width: 108px;
+            height: 15px;
+            position: absolute;
+            left: -45px;
+            top: 154px;
+            font-size: 13px;
+            font-weight: 600;
+            color: black;
+        }
+        .show-entries div {
+            position: absolute;
+            text-align: center;
+        }
+        .show-entries .show {
+            width: 34px;
+            left: 0px;
+        }
+        .show-entries .entries {
+            width: 44px;
+            left: 64px;
+        }
+        .show-entries .box {
+            width: 20px;
+            height: 15px;
+            left: 39px;
+            background: white;
+            border-radius: 5px;
+            border: 0.40px rgba(0, 0, 0, 0.50) solid;
         }
     </style>
 </head>
 <body>
-    <div class="dashboard-container">
+    <div class="container">
         <div class="sidebar">
-            <img src="assets/icons/Menu.png" href="dashboard.html">
-            <img src="assets/icons/Home Page.png" href="index.html">
-            <img src="assets/icons/Analytics.png">
-            <img src="assets/icons/Checked Identification Documents.png" style="opacity: 0.5;">
-            <img src="assets/icons/User.png" style="opacity: 0.5;">
+            <img id="menu-icon" src="assets/icons/Menu.png" alt="Menu Icon" onclick="toggleSidebar()"/>
+        <div class="menu-item">
+            <a href="index.html">
+                <img class="icon icon1" src="assets/icons/Home Page.png" alt="Home Page Icon" />
+                <span class="icon-text">Home</span>
+            </a>
         </div>
-        <div class="content-area">
-            <div class="top-bar">
-                <div class="search-box">
-                    <img src="assets/icons/Search.png">
-                    <div class="search-text">Cari Asset</div>
-                </div>
-            </div>
-            <div class="action-buttons">
-                <div class="action-button">
-                    <img src="assets/icons/MacOS Maximize.png">
-                    <span>Tambah asset</span>
-                </div>
-                <div class="action-button">
-                    <img src="assets/icons/Replay.png">
-                    <span>Perbarui</span>
-                </div>
-                <div class="action-button">
-                    <img src="assets/icons/Multiple Choice.png">
-                    <span>Pilih</span>
-                </div>
-                <div class="action-button">
-                    <img src="assets/icons/Delete.png">
-                    <span>Hapus</span>
-                </div>
-            </div>
-            <div class="content-box">
-                <div class="table-info">
-                    <div></div>
-                    <div>Asset Number</div>
-                    <div>Nama Asset</div>
-                    <div>Jenis Asset</div>
-                    <div>Kondisi Asset</div>
-                    <div>Terakhir diperbarui</div>
-                    <div>Unggah oleh</div>
-                </div>
-                <div class="no-data">Tidak ada data yang tersedia dalam tabel.</div>
-            </div>
-            <div class="pagination">
-                <div>1</div>
-                <div class="pagination-link">Previous</div>
-                <div class="pagination-link">Next</div>
-            </div>
+        <div class="menu-item">
+            <a href="dashboard.html">
+                <img class="icon icon2" src="assets/icons/Analytics.png" alt="Analytics Icon" />
+                <span class="icon-text" style="opacity: 1;">Dashboard</span>
+            </a>
         </div>
+        <div class="menu-item">
+            <a href="validisasi.html">
+                <img class="icon icon3" src="assets/icons/Checked Identification Documents.png" alt="Checked Identification Documents Icon" />
+                <span class="icon-text">Validisasi</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="profile.html">
+                <img class="icon icon4" src="assets/icons/User.png" alt="User Icon" />
+                <span class="icon-text">Profile</span>
+            </a>
+        </div>
+        <div class="menu-item">
+            <a href="login.html">
+                <img class="icon icon5" src="assets/icons/Logout.png" alt="Logout Icon" />
+                <span class="icon-text" style="opacity: 1;">Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('expanded');
+            document.querySelector('#menu-icon').classList.toggle('slide-out');
+        }
+    </script>
+
+        <div class="header-buttons">
+            <a href="tambah asset umum.html">
+            <div class="button tambah">
+                <img src="assets/icons/MacOS Maximize.png" alt="Tambah" />Tambah asset
+            </div>
+        </a>
+            <div class="button pilih">
+                <img src="assets/icons/Multiple Choice.png" alt="Pilih" />Pilih
+            </div>
+            <div class="button hapus">
+                <img src="assets/icons/Delete.png" alt="Hapus" />Hapus
+            </div>
+            <div class="button perbarui">
+                <img src="assets/icons/Replay.png" alt="Perbarui" />Perbarui
+            </div>
+
+        </div>
+        <div class="search-bar">
+            <div class="input" style="left: 908px; top: 11px; width: 172px;">
+                <img src="assets/icons/Search.png" alt="Search" />
+                <span class="text">Cari Asset</span>
+            </div>
+            <div class="asset-card">
+                <div class="asset-card-bg"></div>
+                <div class="asset-text">Asset Tidak berwujud (ATB)</div>
+                <img class="asset-icon" src="assets/icons/Chevron Down.png" alt="Chevron Down">
+                <div class="dropdown">
+                    <button class="dropbtn">
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#">Asset Tidak Berwujud (ATB)</a>
+                        <a href="#">Asset Tetap & Inventaris (ATB)</a>
+                        <a href="#">Property Terbengkalai (ATTB)</a>
+                        <a href="#">Asset Tetap & Inventaris (ATTB)</a>
+                    </div>
+        </div>
+        <div class="asset-table">
+            <div class="table-header">
+                <div class="icon" style="left: 8px; top: 8px;"></div>
+                <div style="left: 44px; top: 8px;">Asset Number</div>
+                <div style="left: 216px; top: 8px;">Nama Asset</div>
+                <div style="left: 402px; top: 8px;">Jenis Asset</div>
+                <div style="left: 588px; top: 8px;">Kondisi Asset</div>
+                <div style="left: 774px; top: 8px;">Terakhir diperbarui</div>
+                <div style="left: 996px; top: 8px;">Unggah oleh</div>
+            </div>
+            <div class="no-data">Tidak ada data yang tersedia dalam tabel.</div>
+        </div>
+        <div class="show-entries">
+            <div class="show">Show</div>
+            <div class="box" style="top: 0;"></div>
+            <div class="entries" style="top: 0;">Entries</div>
+        </div>
+
     </div>
 </body>
 </html>
